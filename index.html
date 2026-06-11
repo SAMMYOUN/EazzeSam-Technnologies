@@ -1,0 +1,795 @@
+
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eazzesam Technologies | Professional Digital Solutions & Tech Training</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        darkBg: '#020617',
+                        cardBg: '#0f172a',
+                        techBlue: '#3b82f6',
+                        innovGreen: '#22c55e',
+                    },
+                    animation: {
+                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'float': 'float 6s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-10px)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .neon-glow-blue { box-shadow: 0 0 35px rgba(59, 130, 246, 0.2); }
+        .neon-glow-green { box-shadow: 0 0 35px rgba(34, 197, 94, 0.2); }
+        .nav-active { color: #22c55e; border-bottom: 2px solid #22c55e; }
+        .mobile-nav-active { color: #22c55e; background-color: rgba(34, 197, 94, 0.1); }
+        .page-section { display: none; }
+        .page-section.active-page { display: block; }
+        
+        .custom-scrollbar::-webkit-scrollbar { width: 5px; }
+        .custom-scrollbar::-webkit-scrollbar-track { background: #020617; }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: #1e293b; border-radius: 99px; }
+    </style>
+</head>
+<body class="bg-darkBg text-gray-100 font-sans antialiased selection:bg-innovGreen selection:text-black">
+
+    <header class="w-full border-b border-slate-900 bg-darkBg/90 backdrop-blur sticky top-0 z-40">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 py-4 flex items-center justify-between">
+            <a href="#" onclick="navigateTo('home')" class="flex items-center space-x-2 group">
+                <div class="text-2xl sm:text-3xl font-black tracking-tighter flex items-center bg-slate-900 px-2.5 py-1 rounded-xl border border-slate-800 transition duration-300 group-hover:border-innovGreen">
+                    <span class="text-techBlue">E</span>
+                    <span class="text-innovGreen">S</span>
+                </div>
+                <div class="leading-none">
+                    <span class="text-[11px] sm:text-xs tracking-widest font-bold text-gray-200 block">EAZZESAM</span>
+                    <span class="text-[8px] sm:text-[9px] tracking-wider text-gray-500 font-medium block">TECHNOLOGIES</span>
+                </div>
+            </a>
+
+            <nav class="hidden xl:flex items-center space-x-5 text-xs font-bold tracking-wider uppercase text-gray-400">
+                <a href="#" id="nav-home" onclick="navigateTo('home')" class="nav-active pb-1 transition hover:text-white">Home</a>
+                <a href="#" id="nav-about" onclick="navigateTo('about')" class="pb-1 transition hover:text-white">About</a>
+                <a href="#" id="nav-services" onclick="navigateTo('services')" class="pb-1 transition hover:text-white">Services</a>
+                <a href="#" id="nav-portfolio" onclick="navigateTo('portfolio')" class="pb-1 transition hover:text-white">Projects</a>
+                <a href="#" id="nav-academy" onclick="navigateTo('academy')" class="pb-1 text-innovGreen border-dashed border-b border-innovGreen/30 transition hover:text-white">IT Academy</a>
+                <a href="#" id="nav-pricing" onclick="navigateTo('pricing')" class="pb-1 transition hover:text-white">Plans</a>
+                <a href="#" id="nav-team" onclick="navigateTo('team')" class="pb-1 transition hover:text-white">Team</a>
+                <a href="#" id="nav-blog" onclick="navigateTo('blog')" class="pb-1 transition hover:text-white">Blog</a>
+                <a href="#" id="nav-chatbot" onclick="navigateTo('chatbot')" class="pb-1 transition hover:text-white normal-case flex items-center gap-1"><i class="fa-solid fa-robot text-innovGreen"></i>EazzSam AI Agent</a>
+                <a href="#" id="nav-contact" onclick="navigateTo('contact')" class="nav-contact-link pb-1 transition hover:text-white">Contact</a>
+            </nav>
+
+            <div class="flex items-center space-x-3">
+                <a href="https://wa.me/233542424592" target="_blank" class="hidden lg:inline-block text-xs font-bold border border-slate-800 bg-slate-900 text-innovGreen px-4 py-2.5 rounded-xl hover:bg-innovGreen/10 transition shadow-sm">
+                    <i class="fa-brands fa-whatsapp mr-1.5"></i> 054 242 4592
+                </a>
+                <button onclick="navigateTo('academy')" class="bg-gradient-to-r from-techBlue to-innovGreen text-slate-950 font-bold text-xs px-5 py-2.5 rounded-xl hover:opacity-90 transition shadow-lg shadow-techBlue/20 transform hover:scale-105 duration-200">
+                    Join IT Training
+                </button>
+                <button onclick="toggleMobileMenu()" id="mobileMenuBtn" class="xl:hidden text-gray-400 hover:text-white text-xl p-1 focus:outline-none">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+            </div>
+        </div>
+
+        <div id="mobileMenu" class="hidden xl:hidden border-t border-slate-900 bg-darkBg px-4 py-4 space-y-1 animate__animated animate__fadeIn">
+            <a href="#" id="mob-nav-home" onclick="navigateTo('home'); toggleMobileMenu();" class="mobile-nav-active block px-4 py-2 rounded-xl text-sm font-semibold text-gray-300">Home</a>
+            <a href="#" id="mob-nav-about" onclick="navigateTo('about'); toggleMobileMenu();" class="block px-4 py-2 rounded-xl text-sm font-semibold text-gray-300">About</a>
+            <a href="#" id="mob-nav-services" onclick="navigateTo('services'); toggleMobileMenu();" class="block px-4 py-2 rounded-xl text-sm font-semibold text-gray-300">Services</a>
+            <a href="#" id="mob-nav-portfolio" onclick="navigateTo('portfolio'); toggleMobileMenu();" class="block px-4 py-2 rounded-xl text-sm font-semibold text-gray-300">Our Portfolio Projects</a>
+            <a href="#" id="mob-nav-academy" onclick="navigateTo('academy'); toggleMobileMenu();" class="block px-4 py-2 rounded-xl text-sm font-bold text-innovGreen bg-innovGreen/5">🎓 IT Training & Certifications</a>
+            <a href="#" id="mob-nav-pricing" onclick="navigateTo('pricing'); toggleMobileMenu();" class="block px-4 py-2 rounded-xl text-sm font-semibold text-gray-300">Pricing Packages</a>
+            <a href="#" id="mob-nav-team" onclick="navigateTo('team'); toggleMobileMenu();" class="block px-4 py-2 rounded-xl text-sm font-semibold text-gray-300">Our Experts Team</a>
+            <a href="#" id="mob-nav-blog" onclick="navigateTo('blog'); toggleMobileMenu();" class="block px-4 py-2 rounded-xl text-sm font-semibold text-gray-300">Blog Hub</a>
+            <a href="#" id="mob-nav-chatbot" onclick="navigateTo('chatbot'); toggleMobileMenu();" class="block px-4 py-2 rounded-xl text-sm font-semibold text-gray-300"><i class="fa-solid fa-robot text-xs text-innovGreen mr-1.5"></i>Ask Helpful AI</a>
+            <a href="#" id="mob-nav-contact" onclick="navigateTo('contact'); toggleMobileMenu();" class="block px-4 py-2 rounded-xl text-sm font-semibold text-gray-300">Contact Us</a>
+        </div>
+    </header>
+
+    <div id="page-home" class="page-section active-page animate__animated animate__fadeIn">
+        <section class="max-w-7xl mx-auto px-4 sm:px-6 pt-10 sm:pt-16 pb-16 sm:pb-20 grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center relative">
+            <div class="lg:col-span-7 space-y-4 sm:space-y-6 text-center lg:text-left">
+                <div class="inline-flex items-center space-x-2 bg-slate-900 border border-slate-800 px-3.5 py-1.5 sm:py-2 rounded-full text-[11px] sm:text-xs text-innovGreen font-semibold animate__animated animate__slideInDown">
+                    <i class="fa-solid fa-circle-check text-innovGreen"></i>
+                    <span>Growing Businesses & Mentoring Talents With Smart Technology</span>
+                </div>
+                <h1 class="text-3xl sm:text-5xl lg:text-6xl font-black tracking-tight leading-tight text-white animate__animated animate__fadeInLeft">
+                    Modern Websites, AI & Security.<br>
+                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-techBlue to-innovGreen">Plus Practical IT Training.</span>
+                </h1>
+                <p class="text-gray-400 text-sm sm:text-base lg:text-lg max-w-xl mx-auto lg:mx-0 leading-relaxed animate__animated animate__fadeInLeft animate__delay-1s">
+                    We build high-quality websites, launch custom smartphone apps, set up secure smart home systems, and install remote-view security cameras. Tell us your goals, and we will handle the technical work.
+                </p>
+                <div class="flex flex-wrap justify-center lg:justify-start gap-3 sm:gap-4 pt-2 animate__animated animate__fadeInUp animate__delay-1s">
+                    <button onclick="navigateTo('services')" class="w-full sm:w-auto justify-center bg-gradient-to-r from-techBlue to-innovGreen text-slate-950 font-extrabold px-6 py-3.5 rounded-xl flex items-center space-x-2 hover:opacity-90 transition text-sm transform hover:scale-105 duration-200">
+                        <span>See Our Services</span>
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </button>
+                    <button onclick="navigateTo('academy')" class="w-full sm:w-auto justify-center bg-slate-900 border border-slate-800 text-white font-medium px-6 py-3.5 rounded-xl flex items-center space-x-2 hover:bg-slate-800 transition text-sm transform hover:scale-105 duration-200">
+                        <span>Learn IT Skills (With Certifications)</span>
+                        <i class="fa-solid fa-graduation-cap text-innovGreen"></i>
+                    </button>
+                </div>
+            </div>
+
+            <div class="lg:col-span-5 flex justify-center items-center relative mt-6 lg:mt-0 animate__animated animate__zoomIn">
+                <div class="w-full max-w-md h-[300px] sm:h-[380px] rounded-2xl overflow-hidden relative border border-slate-800 neon-glow-blue">
+                    <img src="./logo.png" alt="Advanced Tech Framework" class="w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-gradient-to-t from-darkBg to-transparent"></div>
+                </div>
+                <div class="absolute top-4 left-4 bg-slate-950/90 border border-slate-800 p-3 rounded-xl flex items-center space-x-2.5 text-xs shadow-xl animate-float">
+                    <i class="fa-solid fa-laptop-code text-innovGreen"></i>
+                    <span class="font-bold text-gray-200">Fast Websites</span>
+                </div>
+                <div class="absolute bottom-6 right-4 bg-slate-950/90 border border-slate-800 p-3 rounded-xl flex items-center space-x-2.5 text-xs shadow-xl animate-float" style="animation-delay: 2s;">
+                    <i class="fa-solid fa-shield text-techBlue"></i>
+                    <span class="font-bold text-gray-200">CCTV Safety</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="border-t border-slate-900 bg-slate-950/40 py-16">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6">
+                <div class="text-center max-w-2xl mx-auto mb-12 space-y-2">
+                    <span class="text-xs font-bold tracking-widest text-innovGreen uppercase block">// HOW WE HELP YOU</span>
+                    <h2 class="text-2xl sm:text-3xl font-black text-white">We Handle Everything From Start To Finish</h2>
+                    <p class="text-gray-400 text-sm">You do not need to understand complex code or networks. Here is how we make your digital upgrade simple and stress-free:</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div class="bg-cardBg border border-slate-800/60 p-6 rounded-2xl relative overflow-hidden group">
+                        <div class="absolute top-0 right-0 p-4 font-mono text-5xl font-black text-slate-800/40 select-none group-hover:text-techBlue/10 transition">01</div>
+                        <div class="text-techBlue text-lg bg-slate-950 w-10 h-10 flex items-center justify-center rounded-xl mb-4 border border-slate-800"><i class="fa-solid fa-comments"></i></div>
+                        <h3 class="text-base font-bold text-white mb-2">1. Plain-English Consulting</h3>
+                        <p class="text-gray-400 text-xs sm:text-sm leading-relaxed">We sit down with you or jump on a quick call to talk about your goals. No confusing technical words—just clear plans about what your business needs to grow.</p>
+                    </div>
+                    <div class="bg-cardBg border border-slate-800/60 p-6 rounded-2xl relative overflow-hidden group">
+                        <div class="absolute top-0 right-0 p-4 font-mono text-5xl font-black text-slate-800/40 select-none group-hover:text-innovGreen/10 transition">02</div>
+                        <div class="text-innovGreen text-lg bg-slate-950 w-10 h-10 flex items-center justify-center rounded-xl mb-4 border border-slate-800"><i class="fa-solid fa-hammer"></i></div>
+                        <h3 class="text-base font-bold text-white mb-2">2. Design & Build Phase</h3>
+                        <p class="text-gray-400 text-xs sm:text-sm leading-relaxed">Our experienced development team designs your website layout, sets up the security camera layout, or programs the app features. We show you progress updates along the way.</p>
+                    </div>
+                    <div class="bg-cardBg border border-slate-800/60 p-6 rounded-2xl relative overflow-hidden group">
+                        <div class="absolute top-0 right-0 p-4 font-mono text-5xl font-black text-slate-800/40 select-none group-hover:text-purple-500/10 transition">03</div>
+                        <div class="text-purple-400 text-lg bg-slate-950 w-10 h-10 flex items-center justify-center rounded-xl mb-4 border border-slate-800"><i class="fa-solid fa-rocket"></i></div>
+                        <h3 class="text-base font-bold text-white mb-2">3. Full Launch & Support</h3>
+                        <p class="text-gray-400 text-xs sm:text-sm leading-relaxed">We launch your site securely live on the internet, turn on your smart security equipment, and hand you simple keys. Plus, we stay close by to provide reliable support whenever you need help.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <div id="page-about" class="page-section max-w-7xl mx-auto px-4 sm:px-6 py-12 sm:py-16 animate__animated animate__fadeIn">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
+            <div class="lg:col-span-6 space-y-4 sm:space-y-6">
+                <span class="text-xs font-bold tracking-widest text-innovGreen uppercase block">// GET TO KNOW US</span>
+                <h2 class="text-2xl sm:text-4xl font-extrabold text-white">Your Reliable Local Tech Partner</h2>
+                <p class="text-gray-400 text-xs sm:text-sm leading-relaxed">
+                    EAZZESAM TECHNOLOGIES is a friendly, experienced technology company dedicated to creating professional, high-performing digital setups for local businesses, schools, churches, and homeowners. We believe that technology should make your life easier and your business more profitable—not harder to understand.
+                </p>
+                <div class="p-4 sm:p-5 border-l-4 border-techBlue bg-slate-900/40 rounded-r-xl">
+                    <h4 class="text-xs sm:text-sm font-bold text-white uppercase tracking-wider mb-1">Our Simple Goal</h4>
+                    <p class="text-gray-400 text-xs leading-relaxed">To bring reliable, secure, and modern digital tools right to your doorstep at prices that make complete financial sense.</p>
+                </div>
+            </div>
+            <div class="lg:col-span-6 grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div class="h-44 rounded-2xl overflow-hidden border border-slate-800">
+                    <img src="https://images.unsplash.com/photo-1600132806370-bf17e65e942f?auto=format&fit=crop&w=400&q=80" alt="Modern Workspace Setup" class="w-full h-full object-cover">
+                </div>
+                <div class="h-44 rounded-2xl overflow-hidden border border-slate-800">
+                    <img src="https://images.unsplash.com/photo-1557683316-973673baf926?auto=format&fit=crop&w=400&q=80" alt="Secure Tech Network" class="w-full h-full object-cover">
+                </div>
+                <div class="bg-cardBg border border-slate-800 p-5 sm:p-6 rounded-2xl sm:col-span-2 text-left">
+                    <h4 class="text-white text-xs font-bold uppercase tracking-wider mb-3 text-innovGreen">What Makes Us Different</h4>
+                    <ul class="text-xs text-gray-400 space-y-2.5 grid grid-cols-1 sm:grid-cols-2">
+                        <li><i class="fa-solid fa-check text-innovGreen mr-2"></i>Clear, No-Jargon Chatting</li>
+                        <li><i class="fa-solid fa-check text-innovGreen mr-2"></i>Affordable, Honest Pricing</li>
+                        <li><i class="fa-solid fa-check text-innovGreen mr-2"></i>Local Accra Support Experts</li>
+                        <li><i class="fa-solid fa-check text-innovGreen mr-2"></i>High-Quality Premium Work</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="page-services" class="page-section max-w-7xl mx-auto px-4 sm:px-6 py-12 sm:py-16 animate__animated animate__fadeIn">
+        <div class="text-center max-w-xl mx-auto mb-10 sm:mb-16 space-y-2">
+            <span class="text-xs font-bold tracking-widest text-techBlue uppercase block">// WHAT WE OFFER</span>
+            <h2 class="text-2xl sm:text-3xl font-black text-white">Bespoke Services Made Simple</h2>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
+            <div class="bg-cardBg/60 border border-slate-800/80 p-5 sm:p-6 rounded-2xl hover:border-techBlue/60 transition duration-300 transform hover:-translate-y-1">
+                <div class="text-techBlue text-xl bg-slate-900 w-10 h-10 flex items-center justify-center rounded-xl mb-4 border border-slate-800"><i class="fa-solid fa-globe"></i></div>
+                <h3 class="text-sm sm:text-base font-bold text-white mb-2">Web Design & Development</h3>
+                <ul class="text-xs text-gray-400 space-y-1.5">
+                    <li>• Websites for Businesses & Shops</li>
+                    <li>• Smooth Online Shopping Stores</li>
+                    <li>• School Management Platforms</li>
+                    <li>• Personal Portfolios & Blogs</li>
+                </ul>
+            </div>
+            <div class="bg-cardBg/60 border border-slate-800/80 p-5 sm:p-6 rounded-2xl hover:border-innovGreen/60 transition duration-300 transform hover:-translate-y-1">
+                <div class="text-innovGreen text-xl bg-slate-900 w-10 h-10 flex items-center justify-center rounded-xl mb-4 border border-slate-800"><i class="fa-solid fa-robot"></i></div>
+                <h3 class="text-sm sm:text-base font-bold text-white mb-2">Smart AI Automation</h3>
+                <ul class="text-xs text-gray-400 space-y-1.5">
+                    <li>• Smart Chatbots for Websites</li>
+                    <li>• Automated Client Reply Systems</li>
+                    <li>• Smart Data Organizers</li>
+                    <li>• Work Saving Software Tools</li>
+                </ul>
+            </div>
+            <div class="bg-cardBg/60 border border-slate-800/80 p-5 sm:p-6 rounded-2xl hover:border-purple-500/60 transition duration-300 transform hover:-translate-y-1">
+                <div class="text-purple-400 text-xl bg-slate-900 w-10 h-10 flex items-center justify-center rounded-xl mb-4 border border-slate-800"><i class="fa-solid fa-mobile-screen-button"></i></div>
+                <h3 class="text-sm sm:text-base font-bold text-white mb-2">Mobile App Development</h3>
+                <ul class="text-xs text-gray-400 space-y-1.5">
+                    <li>• Custom Android Apps</li>
+                    <li>• Sleek Apple iOS Apps</li>
+                    <li>• Apps for Delivery & Shops</li>
+                    <li>• Internal Management Tools</li>
+                </ul>
+            </div>
+            <div class="bg-cardBg/60 border border-slate-800/80 p-5 sm:p-6 rounded-2xl hover:border-amber-500/60 transition duration-300 transform hover:-translate-y-1">
+                <div class="text-amber-500 text-xl bg-slate-900 w-10 h-10 flex items-center justify-center rounded-xl mb-4 border border-slate-800"><i class="fa-solid fa-video"></i></div>
+                <h3 class="text-sm sm:text-base font-bold text-white mb-2">CCTV Camera Installation</h3>
+                <ul class="text-xs text-gray-400 space-y-1.5">
+                    <li>• Secure Cameras for Homes</li>
+                    <li>• Big Office Surveillance Networks</li>
+                    <li>• Phone-Connected Live Views</li>
+                    <li>• Secure Recording Safes</li>
+                </ul>
+            </div>
+            <div class="bg-cardBg/60 border border-slate-800/80 p-5 sm:p-6 rounded-2xl hover:border-cyan-400/60 transition duration-300 transform hover:-translate-y-1">
+                <div class="text-cyan-400 text-xl bg-slate-900 w-10 h-10 flex items-center justify-center rounded-xl mb-4 border border-slate-800"><i class="fa-solid fa-house-laptop"></i></div>
+                <h3 class="text-sm sm:text-base font-bold text-white mb-2">Smart Home Setup</h3>
+                <ul class="text-xs text-gray-400 space-y-1.5">
+                    <li>• App-Controlled Lighting</li>
+                    <li>• Fingerprint & Smart Door Locks</li>
+                    <li>• Voice-Controlled Rooms</li>
+                    <li>• Full Connected Convenience</li>
+                </ul>
+            </div>
+            <div class="bg-cardBg/60 border border-slate-800/80 p-5 sm:p-6 rounded-2xl hover:border-rose-500/60 transition duration-300 transform hover:-translate-y-1">
+                <div class="text-rose-500 text-xl bg-slate-900 w-10 h-10 flex items-center justify-center rounded-xl mb-4 border border-slate-800"><i class="fa-solid fa-palette"></i></div>
+                <h3 class="text-sm sm:text-base font-bold text-white mb-2">Graphics & Business Branding</h3>
+                <ul class="text-xs text-gray-400 space-y-1.5">
+                    <li>• Professional Business Logos</li>
+                    <li>• High-Quality Flyers & Graphics</li>
+                    <li>• Modern Layout Presentations</li>
+                    <li>• Promotional Commercial Videos</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div id="page-portfolio" class="page-section max-w-7xl mx-auto px-4 sm:px-6 py-12 sm:py-16 animate__animated animate__fadeIn">
+        <div class="text-center max-w-xl mx-auto mb-10 sm:mb-14 space-y-2">
+            <span class="text-xs font-bold tracking-widest text-innovGreen uppercase block">// CLIENT CASE STUDIES</span>
+            <h2 class="text-2xl sm:text-3xl font-black text-white">Our Real Work Projects</h2>
+            <p class="text-gray-400 text-xs sm:text-sm">Take a look at systems we have successfully built and deployed for happy clients across regions.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div class="bg-cardBg border border-slate-800/80 rounded-2xl overflow-hidden group hover:border-techBlue/50 transition duration-300">
+                <div class="h-48 overflow-hidden relative">
+                    <img src="https://images.unsplash.com/photo-1508873535684-277a3cbcc4e8?auto=format&fit=crop&w=500&q=80" alt="School Management Project" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-cardBg to-transparent"></div>
+                </div>
+                <div class="p-5 space-y-2">
+                    <span class="text-[10px] uppercase font-bold text-techBlue tracking-wider">Web Portal</span>
+                    <h3 class="text-base font-bold text-white">Apex Academy Portal</h3>
+                    <p class="text-gray-400 text-xs leading-relaxed">A complete school management application helping teachers manage online report cards, track student attendance, and receive clear electronic tuition payments easily.</p>
+                </div>
+            </div>
+            <div class="bg-cardBg border border-slate-800/80 rounded-2xl overflow-hidden group hover:border-innovGreen/50 transition duration-300">
+                <div class="h-48 overflow-hidden relative">
+                    <img src="https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&w=500&q=80" alt="Ecommerce Project" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-cardBg to-transparent"></div>
+                </div>
+                <div class="p-5 space-y-2">
+                    <span class="text-[10px] uppercase font-bold text-innovGreen tracking-wider">E-Commerce Shop</span>
+                    <h3 class="text-base font-bold text-white">Star Groceries Online Store</h3>
+                    <p class="text-gray-400 text-xs leading-relaxed">A simple, modern online store built with automated inventory alerts, cart systems, and direct WhatsApp payment integration for checkout loops.</p>
+                </div>
+            </div>
+            <div class="bg-cardBg border border-slate-800/80 rounded-2xl overflow-hidden group hover:border-amber-500/50 transition duration-300">
+                <div class="h-48 overflow-hidden relative">
+                    <img src="https://images.unsplash.com/photo-1557597774-9d273605dfa9?auto=format&fit=crop&w=500&q=80" alt="CCTV Project" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-cardBg to-transparent"></div>
+                </div>
+                <div class="p-5 space-y-2">
+                    <span class="text-[10px] uppercase font-bold text-amber-500 tracking-wider">Security Loop</span>
+                    <h3 class="text-base font-bold text-white">Elite Residential Estates</h3>
+                    <p class="text-gray-400 text-xs leading-relaxed">Fitted a multi-camera cryptographic network covering internal streets with live phone video support feeds and automated secure solar backups.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="page-academy" class="page-section max-w-7xl mx-auto px-4 sm:px-6 py-12 sm:py-16 animate__animated animate__fadeIn">
+        <div class="bg-gradient-to-br from-slate-950 to-cardBg border border-slate-800 rounded-3xl p-6 sm:p-10 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center mb-12">
+            <div class="lg:col-span-7 space-y-4 sm:space-y-6">
+                <div class="inline-flex items-center space-x-2 bg-innovGreen/10 border border-innovGreen/30 px-3 py-1 rounded-full text-xs text-innovGreen font-bold uppercase">
+                    <i class="fa-solid fa-graduation-cap animate-bounce"></i> Education For Everyone
+                </div>
+                <h2 class="text-2xl sm:text-4xl font-black text-white leading-tight">Practical IT & Computer Science Training Sessions</h2>
+                <p class="text-gray-400 text-xs sm:text-sm leading-relaxed">
+                    Unlock a brighter career without stressful math formulas! We offer simplified, 100% practical tech courses perfect for total beginners, students, or workers trying to expand their office skills. Learn at incredibly affordable local rates and earn a physical, industry-recognized **Course Completion Certification**.
+                </p>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs text-gray-300">
+                    <div><i class="fa-solid fa-circle-check text-innovGreen mr-2"></i>Friendly, Patient Step-by-Step Guidance</div>
+                    <div><i class="fa-solid fa-circle-check text-innovGreen mr-2"></i>Real Practical Projects Built Live</div>
+                    <div><i class="fa-solid fa-circle-check text-innovGreen mr-2"></i>Affordable Installment Plan Keys</div>
+                    <div><i class="fa-solid fa-circle-check text-innovGreen mr-2"></i>Certificate Issued On Graduation</div>
+                </div>
+            </div>
+            <div class="lg:col-span-5 rounded-2xl overflow-hidden h-64 border border-slate-800 shadow-xl">
+                <img src="https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=500&q=80" alt="IT Training Class" class="w-full h-full object-cover">
+            </div>
+        </div>
+
+        <div class="space-y-6">
+            <h3 class="text-xl font-bold text-center text-white">Select Your Desired Learning Path</h3>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="bg-cardBg border border-slate-800 p-6 rounded-2xl space-y-4 flex flex-col justify-between">
+                    <div class="space-y-2">
+                        <div class="w-10 h-10 bg-techBlue/10 text-techBlue rounded-xl flex items-center justify-center text-lg font-bold"><i class="fa-solid fa-code"></i></div>
+                        <h4 class="text-base font-bold text-white">Website & Web App Design</h4>
+                        <p class="text-gray-400 text-xs leading-relaxed">Learn how to create crisp layouts using simple HTML, layout designs, and basic scripts. Build responsive blog systems or retail sites completely from scratch.</p>
+                    </div>
+                    <span class="text-xs text-innovGreen font-bold bg-innovGreen/5 px-2.5 py-1 rounded-md border border-innovGreen/20 self-start">Duration: 8 Weeks</span>
+                </div>
+                <div class="bg-cardBg border border-slate-800 p-6 rounded-2xl space-y-4 flex flex-col justify-between">
+                    <div class="space-y-2">
+                        <div class="w-10 h-10 bg-purple-500/10 text-purple-400 rounded-xl flex items-center justify-center text-lg font-bold"><i class="fa-solid fa-shield-halved"></i></div>
+                        <h4 class="text-base font-bold text-white">CCTV & Hardware Engineering</h4>
+                        <p class="text-gray-400 text-xs leading-relaxed">Learn how to configure remote IP cameras, install modern sensors, arrange router security networks, and build smart security door locks securely.</p>
+                    </div>
+                    <span class="text-xs text-innovGreen font-bold bg-innovGreen/5 px-2.5 py-1 rounded-md border border-innovGreen/20 self-start">Duration: 6 Weeks</span>
+                </div>
+                <div class="bg-cardBg border border-slate-800 p-6 rounded-2xl space-y-4 flex flex-col justify-between">
+                    <div class="space-y-2">
+                        <div class="w-10 h-10 bg-amber-500/10 text-amber-500 rounded-xl flex items-center justify-center text-lg font-bold"><i class="fa-solid fa-desktop"></i></div>
+                        <h4 class="text-base font-bold text-white">Essential Software & Office Tools</h4>
+                        <p class="text-gray-400 text-xs leading-relaxed">Master standard spreadsheet analytics, corporate report production, presentation design frameworks, and beginner automation tools to save working time.</p>
+                    </div>
+                    <span class="text-xs text-innovGreen font-bold bg-innovGreen/5 px-2.5 py-1 rounded-md border border-innovGreen/20 self-start">Duration: 4 Weeks</span>
+                </div>
+            </div>
+            
+            <div class="text-center pt-4">
+                <button onclick="navigateTo('contact')" class="bg-gradient-to-r from-techBlue to-innovGreen text-slate-950 text-xs font-black uppercase tracking-wider px-8 py-3.5 rounded-xl shadow-lg hover:opacity-90 transition">
+                    Book an Affordable Slot Today <i class="fa-solid fa-arrow-right ml-1"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div id="page-pricing" class="page-section max-w-7xl mx-auto px-4 sm:px-6 py-12 sm:py-16 animate__animated animate__fadeIn">
+        <div class="text-center max-w-xl mx-auto mb-10 sm:mb-14 space-y-2">
+            <span class="text-xs font-bold tracking-widest text-techBlue uppercase block">// TRANSPARENT ESTIMATES</span>
+            <h2 class="text-2xl sm:text-3xl font-black text-white">Affordable Packages with Zero Hidden Fees</h2>
+            <p class="text-gray-400 text-xs sm:text-sm">Pick a clear, budget-friendly plan configured to suit your immediate expansion milestones perfectly.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 items-stretch">
+            <div class="bg-cardBg border border-slate-800/80 p-6 rounded-2xl flex flex-col justify-between space-y-6">
+                <div class="space-y-2">
+                    <h3 class="text-sm uppercase tracking-widest font-bold text-gray-400">Starter Core</h3>
+                    <div class="text-xl font-mono font-bold text-white">Affordable Local Pricing</div>
+                    <p class="text-xs text-gray-400">Great for individuals or small start-ups needing a modern, clear digital landing footprint.</p>
+                    <ul class="text-xs text-gray-400 pt-4 space-y-2.5 border-t border-slate-900">
+                        <li><i class="fa-solid fa-circle-check text-techBlue mr-2"></i>1 Clean Landing Page</li>
+                        <li><i class="fa-solid fa-circle-check text-techBlue mr-2"></i>Fully Responsive Mobile Layout</li>
+                        <li><i class="fa-solid fa-circle-check text-techBlue mr-2"></i>Direct WhatsApp Tap Support Link</li>
+                        <li><i class="fa-solid fa-circle-check text-techBlue mr-2"></i>1 Month Free Support Checkups</li>
+                    </ul>
+                </div>
+                <button onclick="navigateTo('contact')" class="w-full bg-slate-950 hover:bg-slate-900 border border-slate-800 text-xs font-bold text-white py-3 rounded-xl transition">Select Starter Package</button>
+            </div>
+            <div class="bg-cardBg border-2 border-innovGreen p-6 rounded-2xl flex flex-col justify-between space-y-6 relative">
+                <div class="absolute -top-3.5 right-6 bg-innovGreen text-slate-950 font-black tracking-widest text-[9px] uppercase px-3 py-1 rounded-full">Most Popular Package</div>
+                <div class="space-y-2">
+                    <h3 class="text-sm uppercase tracking-widest font-bold text-innovGreen">Corporate Growth</h3>
+                    <div class="text-xl font-mono font-bold text-white">Flexible Installment Rates</div>
+                    <p class="text-xs text-gray-400">Configured perfectly for growing stores, hotels, networks, or school institutions.</p>
+                    <ul class="text-xs text-gray-300 pt-4 space-y-2.5 border-t border-slate-900">
+                        <li><i class="fa-solid fa-circle-check text-innovGreen mr-2"></i>Up to 5 Multi-Page Sections</li>
+                        <li><i class="fa-solid fa-circle-check text-innovGreen mr-2"></i>Full Catalog / E-Commerce Operations</li>
+                        <li><i class="fa-solid fa-circle-check text-innovGreen mr-2"></i>Smart AI Chatbot Setup Added</li>
+                        <li><i class="fa-solid fa-circle-check text-innovGreen mr-2"></i>Premium Graphics Branding Assets</li>
+                    </ul>
+                </div>
+                <button onclick="navigateTo('contact')" class="w-full bg-gradient-to-r from-techBlue to-innovGreen text-slate-950 font-bold text-xs py-3 rounded-xl hover:opacity-90 transition">Choose Corporate Growth</button>
+            </div>
+            <div class="bg-cardBg border border-slate-800/80 p-6 rounded-2xl flex flex-col justify-between space-y-6">
+                <div class="space-y-2">
+                    <h3 class="text-sm uppercase tracking-widest font-bold text-gray-400">Custom Infrastructure</h3>
+                    <div class="text-xl font-mono font-bold text-white">Customized Estimates</div>
+                    <p class="text-xs text-gray-400">For complex distributed physical loop setups or custom mobile application tracking programs.</p>
+                    <ul class="text-xs text-gray-400 pt-4 space-y-2.5 border-t border-slate-900">
+                        <li><i class="fa-solid fa-circle-check text-techBlue mr-2"></i>Custom App & Database Designs</li>
+                        <li><i class="fa-solid fa-circle-check text-techBlue mr-2"></i>Full Advanced CCTV Multi-Feeds</li>
+                        <li><i class="fa-solid fa-circle-check text-techBlue mr-2"></i>Smart Home Hardware Synchronizations</li>
+                        <li><i class="fa-solid fa-circle-check text-techBlue mr-2"></i>24/7 Dedicated Support Contract</li>
+                    </ul>
+                </div>
+                <button onclick="navigateTo('contact')" class="w-full bg-slate-950 hover:bg-slate-900 border border-slate-800 text-xs font-bold text-white py-3 rounded-xl transition">Request Custom Quote</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="page-team" class="page-section max-w-7xl mx-auto px-4 sm:px-6 py-12 sm:py-16 animate__animated animate__fadeIn">
+        <div class="text-center max-w-xl mx-auto mb-10 sm:mb-14 space-y-2">
+            <span class="text-xs font-bold tracking-widest text-innovGreen uppercase block">// MEET THE REASON</span>
+            <h2 class="text-2xl sm:text-3xl font-black text-white">Our Friendly Technology Experts</h2>
+            <p class="text-gray-400 text-xs sm:text-sm">Meet the professional technicians and engineers who make sure your systems work perfectly.</p>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div class="bg-cardBg border border-slate-800/60 p-5 rounded-2xl flex items-center space-x-4">
+                <div class="w-16 h-16 rounded-full overflow-hidden border border-slate-700 bg-slate-950 flex-shrink-0">
+                    <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=150&q=80" alt="Sam" class="w-full h-full object-cover object-top">
+                </div>
+                <div class="min-w-0">
+                    <h3 class="text-sm font-bold text-white truncate">Samuel Youn</h3>
+                    <p class="text-xs text-innovGreen font-semibold">Lead Solutions Architect</p>
+                    <p class="text-[10px] text-gray-500 pt-0.5 truncate">Web Pipelines & Hardware Ops</p>
+                </div>
+            </div>
+            <div class="bg-cardBg border border-slate-800/60 p-5 rounded-2xl flex items-center space-x-4">
+                <div class="w-16 h-16 rounded-full overflow-hidden border border-slate-700 bg-slate-950 flex-shrink-0">
+                    <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=150&q=80" alt="Team Member" class="w-full h-full object-cover">
+                </div>
+                <div class="min-w-0">
+                    <h3 class="text-sm font-bold text-white truncate">Blessing Mensah</h3>
+                    <p class="text-xs text-techBlue font-semibold">Lead IT Training Director</p>
+                    <p class="text-[10px] text-gray-500 pt-0.5 truncate">Practical Academy Mentor</p>
+                </div>
+            </div>
+            <div class="bg-cardBg border border-slate-800/60 p-5 rounded-2xl flex items-center space-x-4">
+                <div class="w-16 h-16 rounded-full overflow-hidden border border-slate-700 bg-slate-950 flex-shrink-0">
+                    <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=150&q=80" alt="Team Member" class="w-full h-full object-cover object-top">
+                </div>
+                <div class="min-w-0">
+                    <h3 class="text-sm font-bold text-white truncate">Emmanuel Tetteh</h3>
+                    <p class="text-xs text-amber-500 font-semibold">Senior Security Technician</p>
+                    <p class="text-[10px] text-gray-500 pt-0.5 truncate">CCTV & Network Deployment</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="page-chatbot" class="page-section max-w-6xl mx-auto px-4 sm:px-6 py-8 sm:py-12 animate__animated animate__zoomIn">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 bg-slate-950/80 border border-slate-900 rounded-3xl overflow-hidden min-h-[600px] shadow-2xl">
+            
+            <div class="lg:col-span-4 bg-cardBg border-r border-slate-900 p-6 flex flex-col justify-between space-y-6">
+                <div class="space-y-4">
+                    <div class="flex items-center space-x-2">
+                        <div class="w-2.5 h-2.5 bg-innovGreen rounded-full animate-ping"></div>
+                        <span class="text-xs font-bold text-innovGreen uppercase tracking-wider">Online Helper System</span>
+                    </div>
+                    <h2 class="text-xl font-black text-white">Talk to our Friendly AI</h2>
+                    <p class="text-gray-400 text-xs leading-relaxed">
+                        No confusing engineering terms here. Ask this digital assistant any question about our work, practical IT training classes, prices, or camera setups, and get answers in plain, everyday English.
+                    </p>
+                    <div class="pt-2">
+                        <span class="text-[10px] uppercase text-gray-500 font-bold tracking-widest block mb-2">Quick Sample Topics</span>
+                        <div class="flex flex-wrap gap-1.5">
+                            <span class="text-[10px] bg-slate-900 text-gray-400 px-2.5 py-1 rounded-md border border-slate-800">Websites For Beginners</span>
+                            <span class="text-[10px] bg-slate-900 text-gray-400 px-2.5 py-1 rounded-md border border-slate-800">Affordable Training</span>
+                            <span class="text-[10px] bg-slate-900 text-gray-400 px-2.5 py-1 rounded-md border border-slate-800">Camera App Setup</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="border-t border-slate-900 pt-4">
+                    <p class="text-[11px] text-gray-500 leading-tight">Motto: <span class="italic text-gray-400">“Your Vision, Our Technology.”</span></p>
+                </div>
+            </div>
+
+            <div class="lg:col-span-8 flex flex-col h-[550px] sm:h-[600px]">
+                <div class="bg-slate-900/60 px-6 py-4 flex items-center justify-between border-b border-slate-900">
+                    <div class="flex items-center space-x-3">
+                        <i class="fa-solid fa-face-smile text-innovGreen text-sm"></i>
+                        <span class="text-xs font-medium text-gray-300 tracking-wider">Eazzesam Helpful Assistant</span>
+                    </div>
+                    <button onclick="clearDedicatedChat()" class="text-xs text-gray-500 hover:text-rose-400 transition"><i class="fa-solid fa-rotate-left mr-1"></i> Clear Chat Screen</button>
+                </div>
+
+                <div id="dedicatedConsole" class="flex-1 p-6 overflow-y-auto space-y-4 text-xs custom-scrollbar bg-slate-950/20">
+                    <div class="flex flex-col space-y-1 max-w-[85%] animate__animated animate__fadeInUp">
+                        <div class="bg-slate-900 text-gray-200 p-3.5 rounded-2xl rounded-tl-none border border-slate-800/60 leading-relaxed text-sm">
+                            Hi there! 👋 I am the Eazzesam Digital Helper. I am here to explain what we do in easy, simple terms. Tap any of the quick-buttons below to find out how we can help you build an amazing website, join our affordable certified IT classes, or secure your home!
+                        </div>
+                        <span class="text-[9px] text-gray-500 px-1">Eazzesam Friendly Assistant</span>
+                    </div>
+                </div>
+
+                <div class="px-6 py-3 flex flex-wrap gap-2 border-t border-slate-900 bg-slate-950/40">
+                    <button onclick="triggerDedicatedReply('Explain your Website Design in simple terms')" class="bg-slate-900 hover:border-techBlue border border-slate-800 text-xs text-gray-300 px-3 py-1.5 rounded-xl transition">🌐 Custom Websites</button>
+                    <button onclick="triggerDedicatedReply('Tell me about your practical IT training classes and certification')" class="bg-slate-900 hover:border-purple-500 border border-slate-800 text-xs text-gray-300 px-3 py-1.5 rounded-xl transition">🎓 IT Training & Certificate</button>
+                    <button onclick="triggerDedicatedReply('Tell me about your Security Cameras and Smart Locks like I am 5')" class="bg-slate-900 hover:border-amber-500 border border-slate-800 text-xs text-gray-300 px-3 py-1.5 rounded-xl transition">📹 Cameras & Smart Doors</button>
+                    <button onclick="triggerDedicatedReply('Where is your office and how do I call you?')" class="bg-slate-900 hover:border-innovGreen border border-slate-800 text-xs text-gray-300 px-3 py-1.5 rounded-xl transition">📞 Call Line & Location</button>
+                </div>
+
+                <form onsubmit="handleDedicatedChatInput(event)" class="p-3 bg-slate-900 border-t border-slate-900 flex items-center space-x-3">
+                    <div class="flex-1 relative">
+                        <input id="dedicatedField" type="text" required autocomplete="off" class="w-full bg-slate-950 text-xs sm:text-sm pl-4 pr-4 py-3.5 rounded-xl border border-slate-800 text-white focus:outline-none focus:border-techBlue focus:ring-1 focus:ring-techBlue/30 transition" placeholder="Type your question here in regular language...">
+                    </div>
+                    <button type="submit" class="bg-gradient-to-r from-techBlue to-innovGreen text-slate-950 font-bold px-5 py-3.5 rounded-xl hover:opacity-90 transition flex-shrink-0 text-xs tracking-wider uppercase font-black">
+                        Ask Now <i class="fa-solid fa-paper-plane ml-1.5"></i>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div id="page-blog" class="page-section max-w-7xl mx-auto px-4 sm:px-6 py-12 sm:py-16 animate__animated animate__fadeIn">
+        <div class="mb-10 space-y-2 text-center md:text-left">
+            <span class="text-xs font-bold tracking-widest text-innovGreen uppercase block">// SIMPLIFIED TECH INSIGHTS</span>
+            <h2 class="text-2xl sm:text-3xl font-black text-white">Technology Made Easy Articles</h2>
+            <p class="text-gray-400 text-xs sm:text-sm">We break down complex modern systems into clear stories so you can learn how to protect your home and increase business revenue.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+            <article class="bg-cardBg border border-slate-800 rounded-2xl overflow-hidden shadow-xl flex flex-col justify-between transform hover:scale-[1.02] duration-300">
+                <div>
+                    <div class="h-48 relative">
+                        <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=400&q=80" alt="Website Analytics Growth" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-cardBg via-transparent to-transparent"></div>
+                        <span class="absolute top-4 left-4 bg-techBlue/90 text-white text-[10px] font-bold px-2 py-1 rounded-md uppercase">For Business Owners</span>
+                    </div>
+                    <div class="p-5 space-y-2">
+                        <h3 class="text-sm sm:text-base font-bold text-white hover:text-techBlue transition cursor-pointer">Why Your Local Business Needs a Clean Website</h3>
+                        <p class="text-xs text-gray-400 leading-relaxed">Having a Facebook page isn't enough anymore. Learn how a real, fast Google-friendly website builds absolute trust and brings customer calls directly to your store without expensive ads.</p>
+                    </div>
+                </div>
+                <div class="px-5 pb-5 text-[10px] text-gray-500 font-medium">June 10, 2026 • 4 Min Read</div>
+            </article>
+
+            <article class="bg-cardBg border border-slate-800 rounded-2xl overflow-hidden shadow-xl flex flex-col justify-between transform hover:scale-[1.02] duration-300">
+                <div>
+                    <div class="h-48 relative">
+                        <img src="https://images.unsplash.com/photo-1558002038-1055907df827?auto=format&fit=crop&w=400&q=80" alt="Smart Security Setup" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-cardBg via-transparent to-transparent"></div>
+                        <span class="absolute top-4 left-4 bg-amber-500/90 text-slate-950 text-[10px] font-bold px-2 py-1 rounded-md uppercase">Home Security</span>
+                    </div>
+                    <div class="p-5 space-y-2">
+                        <h3 class="text-sm sm:text-base font-bold text-white hover:text-innovGreen transition cursor-pointer">Security Cameras: Keeping an Eye on Home from Anywhere</h3>
+                        <p class="text-xs text-gray-400 leading-relaxed">Ever wondered how people view their homes while traveling? We break down how modern phone-connected CCTV security loops give you total comfort while you are far away at work.</p>
+                    </div>
+                </div>
+                <div class="px-5 pb-5 text-[10px] text-gray-500 font-medium">May 28, 2026 • 6 Min Read</div>
+            </article>
+
+            <article class="bg-cardBg border border-slate-800 rounded-2xl overflow-hidden shadow-xl flex flex-col justify-between transform hover:scale-[1.02] duration-300">
+                <div>
+                    <div class="h-48 relative">
+                        <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=400&q=80" alt="Creative Clean Graphics" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-cardBg via-transparent to-transparent"></div>
+                        <span class="absolute top-4 left-4 bg-rose-500/90 text-white text-[10px] font-bold px-2 py-1 rounded-md uppercase">Branding Tips</span>
+                    </div>
+                    <div class="p-5 space-y-2">
+                        <h3 class="text-sm sm:text-base font-bold text-white hover:text-purple-400 transition cursor-pointer">The Secret of Good Branding: More Than Just a Logo</h3>
+                        <p class="text-xs text-gray-400 leading-relaxed">Why do customers pay more to famous brands? Find out how choosing clean business colors, crisp text flyers, and professional cinematic videos instantly sets you apart from amateur setups.</p>
+                    </div>
+                </div>
+                <div class="px-5 pb-5 text-[10px] text-gray-500 font-medium">May 14, 2026 • 5 Min Read</div>
+            </article>
+        </div>
+    </div>
+
+    <div id="page-contact" class="page-section max-w-7xl mx-auto px-4 sm:px-6 py-12 sm:py-16 animate__animated animate__fadeIn">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12">
+            <div class="lg:col-span-5 space-y-6">
+                <div>
+                    <span class="text-xs font-bold tracking-widest text-innovGreen uppercase block">// TALK TO US</span>
+                    <h2 class="text-2xl sm:text-3xl font-black text-white mt-1">Let's Discuss Your Project</h2>
+                </div>
+                <p class="text-gray-400 text-xs sm:text-sm leading-relaxed">
+                    Ready to build your system, ask for custom prices, or register for our practical IT training modules? Send us a message below.
+                </p>
+
+                <div class="space-y-3.5 pt-2">
+                    <div class="flex items-center space-x-4 bg-slate-950 p-4 rounded-xl border border-slate-900 transform hover:translate-x-2 duration-200">
+                        <div class="w-10 h-10 bg-techBlue/10 text-techBlue rounded-lg flex items-center justify-center flex-shrink-0"><i class="fa-solid fa-phone"></i></div>
+                        <div class="min-w-0">
+                            <span class="text-[10px] uppercase tracking-wider text-gray-500 block">Phone call / WhatsApp</span>
+                            <a href="tel:0542424592" class="text-xs sm:text-sm font-bold text-white hover:underline block truncate">054 242 4592</a>
+                        </div>
+                    </div>
+
+                    <div class="flex items-center space-x-4 bg-slate-950 p-4 rounded-xl border border-slate-900 transform hover:translate-x-2 duration-200">
+                        <div class="w-10 h-10 bg-innovGreen/10 text-innovGreen rounded-lg flex items-center justify-center flex-shrink-0"><i class="fa-solid fa-envelope"></i></div>
+                        <div class="min-w-0">
+                            <span class="text-[10px] uppercase tracking-wider text-gray-500 block">Direct Email Address</span>
+                            <a href="mailto:sammyoun24@gmail.com" class="text-xs sm:text-sm font-bold text-white hover:underline block truncate">sammyoun24@gmail.com</a>
+                        </div>
+                    </div>
+
+                    <div class="flex items-center space-x-4 bg-slate-950 p-4 rounded-xl border border-slate-900 transform hover:translate-x-2 duration-200">
+                        <div class="w-10 h-10 bg-purple-500/10 text-purple-400 rounded-lg flex items-center justify-center flex-shrink-0"><i class="fa-solid fa-location-dot"></i></div>
+                        <div class="min-w-0">
+                            <span class="text-[10px] uppercase tracking-wider text-gray-500 block">Our Location Node</span>
+                            <span class="text-xs sm:text-sm font-bold text-white block truncate">Accra, Ghana</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="lg:col-span-7 bg-cardBg border border-slate-800 p-5 sm:p-8 rounded-2xl relative shadow-xl">
+                <form id="contactForm" onsubmit="handleFormSubmission(event)" class="space-y-4">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div class="space-y-1.5">
+                            <label class="text-[10px] sm:text-[11px] font-bold text-gray-400 uppercase tracking-wide">Your Name / Business Name</label>
+                            <input type="text" required class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-xs sm:text-sm text-white focus:outline-none focus:border-techBlue transition" placeholder="e.g. Ama Serwaa">
+                        </div>
+                        <div class="space-y-1.5">
+                            <label class="text-[10px] sm:text-[11px] font-bold text-gray-400 uppercase tracking-wide">Phone Number</label>
+                            <input type="tel" required class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-xs sm:text-sm text-white focus:outline-none focus:border-techBlue transition" placeholder="e.g. 0542424592">
+                        </div>
+                    </div>
+                    <div class="space-y-1.5">
+                        <label class="text-[10px] sm:text-[11px] font-bold text-gray-400 uppercase tracking-wide">Your Email</label>
+                        <input type="email" required class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-xs sm:text-sm text-white focus:outline-none focus:border-techBlue transition" placeholder="yourname@gmail.com">
+                    </div>
+                    <div class="space-y-1.5">
+                        <label class="text-[10px] sm:text-[11px] font-bold text-gray-400 uppercase tracking-wide">What help do you need?</label>
+                        <select class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-xs sm:text-sm text-gray-400 focus:outline-none focus:border-techBlue transition">
+                            <option>I want to register for Certified IT Training Sessions</option>
+                            <option>I need a professional business website</option>
+                            <option>I want security cameras installed</option>
+                            <option>I need smart home / automatic locks setup</option>
+                        </select>
+                    </div>
+                    <div class="space-y-1.5">
+                        <label class="text-[10px] sm:text-[11px] font-bold text-gray-400 uppercase tracking-wide">Tell us about your plans</label>
+                        <textarea rows="4" required class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-xs sm:text-sm text-white focus:outline-none focus:border-techBlue transition" placeholder="Type what you want us to do for you here..."></textarea>
+                    </div>
+                    <button type="submit" class="w-full bg-gradient-to-r from-techBlue to-innovGreen text-slate-950 font-bold text-xs py-3.5 rounded-xl hover:opacity-95 transition tracking-widest uppercase">
+                        Send Message <i class="fa-solid fa-paper-plane ml-1"></i>
+                    </button>
+                </form>
+                <div id="formSuccess" class="hidden absolute inset-0 bg-cardBg rounded-2xl flex flex-col items-center justify-center text-center p-4 sm:p-6 space-y-3 animate__animated animate__fadeIn">
+                    <div class="w-14 h-14 bg-innovGreen/10 text-innovGreen text-2xl rounded-full flex items-center justify-center neon-glow-green"><i class="fa-solid fa-circle-check"></i></div>
+                    <h3 class="text-base sm:text-lg font-bold text-white">Message Sent Successfully!</h3>
+                    <p class="text-xs text-gray-400 max-w-sm">Thank you. Eazzesam Technologies analytics desk has received your request and will call you right back.</p>
+                    <button onclick="resetContactForm()" class="text-xs text-techBlue underline hover:text-white pt-2">Send another note</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="w-full border-t border-slate-900 bg-slate-950/60 py-10 text-center text-gray-500 text-[11px] sm:text-xs">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 space-y-3">
+            <div class="text-white font-bold text-xs sm:text-sm tracking-wider">EAZZESAM TECHNOLOGIES</div>
+            <p class="text-gray-400 italic">“Your Vision, Our Technology.”</p>
+            <div class="text-[9px] sm:text-[10px] tracking-widest text-gray-600">&copy; 2026 EAZZESAM TECHNOLOGIES. All Rights Reserved.</div>
+        </div>
+    </footer>
+
+    <script>
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobileMenu');
+            const btnIcon = document.getElementById('mobileMenuBtn').querySelector('i');
+            menu.classList.toggle('hidden');
+            btnIcon.className = menu.classList.contains('hidden') ? "fa-solid fa-bars" : "fa-solid fa-xmark";
+        }
+
+        function navigateTo(pageId) {
+            const sections = document.querySelectorAll('.page-section');
+            sections.forEach(sec => sec.classList.remove('active-page'));
+
+            const navLinks = document.querySelectorAll('header nav a');
+            navLinks.forEach(link => link.classList.remove('nav-active'));
+
+            const mobLinks = document.querySelectorAll('#mobileMenu a');
+            mobLinks.forEach(link => link.classList.remove('mobile-nav-active'));
+
+            const targetSection = document.getElementById(`page-${pageId}`);
+            if(targetSection) {
+                targetSection.classList.add('active-page');
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+
+            const activeNav = document.getElementById(`nav-${pageId}`);
+            if(activeNav) activeNav.classList.add('nav-active');
+
+            const activeMobNav = document.getElementById(`mob-nav-${pageId}`);
+            if(activeMobNav) activeMobNav.classList.add('mobile-nav-active');
+        }
+
+        function handleDedicatedChatInput(e) {
+            e.preventDefault();
+            const inputField = document.getElementById('dedicatedField');
+            const message = inputField.value.trim();
+            if(!message) return;
+
+            renderDedicatedMessage(message, 'user');
+            inputField.value = '';
+
+            setTimeout(() => { processDedicatedBrainResponse(message); }, 400);
+        }
+
+        function triggerDedicatedReply(promptText) {
+            renderDedicatedMessage(promptText, 'user');
+            setTimeout(() => { processDedicatedBrainResponse(promptText); }, 400);
+        }
+
+        function renderDedicatedMessage(text, sender) {
+            const consoleBox = document.getElementById('dedicatedConsole');
+            const block = document.createElement('div');
+            
+            if(sender === 'user') {
+                block.className = "flex flex-col space-y-1 max-w-[80%] ml-auto items-end animate__animated animate__fadeInUp";
+                block.innerHTML = `
+                    <div class="bg-gradient-to-r from-techBlue to-blue-600 text-white p-3 rounded-2xl rounded-tr-none text-xs sm:text-sm">
+                        ${text}
+                    </div>
+                    <span class="text-[9px] text-gray-500 px-1">Your Question</span>
+                `;
+            } else {
+                block.className = "flex flex-col space-y-1 max-w-[85%] animate__animated animate__fadeInUp";
+                block.innerHTML = `
+                    <div class="bg-slate-900 text-gray-200 p-3.5 rounded-2xl rounded-tl-none border border-slate-800/80 leading-relaxed text-xs sm:text-sm">
+                        ${text}
+                    </div>
+                    <span class="text-[9px] text-gray-500 px-1">Eazzesam Helper AI</span>
+                `;
+            }
+            
+            consoleBox.appendChild(block);
+            consoleBox.scrollTop = consoleBox.scrollHeight;
+        }
+
+        function processDedicatedBrainResponse(query) {
+            const clean = query.toLowerCase();
+            let reply = "I didn't quite catch that, but I'd love to help! If you want a quick pricing quote, class details, or have specific questions, you can leave a note on our **Contact Page** or message our team on WhatsApp at **054 242 4592**.";
+
+            if(clean.includes('web') || clean.includes('site') || clean.includes('shop') || clean.includes('school')) {
+                reply = "<strong>🌐 Custom Websites Made Easy:</strong><br><br>We build professional websites for businesses, shops, personal portfolios, and institutions like schools or churches. They look stunning on phones, load super fast, and make it easy for clients to find you on Google.";
+            } else if (clean.includes('training') || clean.includes('class') || clean.includes('learn') || clean.includes('academy') || clean.includes('certif')) {
+                reply = "<strong>🎓 Practical IT Training & Certifications:</strong><br><br>Our **IT Academy** is built for everyone! We offer 100% practical, friendly courses in **Web Design**, **CCTV/Hardware Installation**, and **Essential Office Tools**. Classes are highly affordable with flexible installment paths, and you get an official graduation certificate to prove your skills.";
+            } else if (clean.includes('camera') || clean.includes('cctv') || clean.includes('lock') || clean.includes('smart') || clean.includes('door') || clean.includes('security')) {
+                reply = "<strong>📹 Cameras & Smart Home Door Protection:</strong><br><br>• **CCTV Safety:** We install clear security cameras around your house or workplace linked to an app on your phone so you can see live videos anywhere.<br>• **Smart Doors:** We set up modern door locks that open via fingerprints or app buttons—no physical keys needed!";
+            } else if (clean.includes('contact') || clean.includes('phone') || clean.includes('whatsapp') || clean.includes('call') || clean.includes('location') || clean.includes('where')) {
+                reply = "<strong>📞 Contact Details & Location:</strong><br><br>• **Our Base Office:** Accra, Ghana.<br>• **Call or WhatsApp Line:** **054 242 4592**.<br>• **Email Inbox:** **sammyoun24@gmail.com**.<br>Feel free to click our Contact tab to drop our desk a message!";
+            }
+
+            renderDedicatedMessage(reply, 'system');
+        }
+
+        function clearDedicatedChat() {
+            const consoleBox = document.getElementById('dedicatedConsole');
+            consoleBox.innerHTML = `
+                <div class="flex flex-col space-y-1 max-w-[85%] animate__animated animate__fadeIn">
+                    <div class="bg-slate-900 text-gray-200 p-3.5 rounded-2xl rounded-tl-none border border-slate-800/60 leading-relaxed text-sm">
+                        Screen cleared! Ready for your next question. Ask me anything!
+                    </div>
+                    <span class="text-[9px] text-gray-500 px-1">Eazzesam Friendly Assistant</span>
+                </div>
+            `;
+        }
+
+        function handleFormSubmission(e) { e.preventDefault(); document.getElementById('formSuccess').classList.remove('hidden'); }
+        function resetContactForm() { document.getElementById('contactForm').reset(); document.getElementById('formSuccess').classList.add('hidden'); }
+    </script>
+</body>
+</html>
+
+```
