@@ -1,10 +1,3 @@
-To handle this upgrade seamlessly, I have replaced Font Awesome entirely with **Google Material Symbols (Outlined variant)** across your full application. I also implemented a highly requested **Dark/Light Mode toggler** equipped with robust contrast ratios.
-### 🌓 What Was Done under the Hood
- * **Google Material Symbols Integration:** Configured using standard typography ligatures via the official <span class="material-symbols-outlined">icon_name</span> elements.
- * **Contrast Preservation:** When switching to **Light Mode**, the dark navy panels switch smoothly to high-contrast crisp neutral colors (bg-slate-50, bg-white) paired with deeply readable carbon text styles (text-slate-900) so readability is never lost.
- * **Persistent Preferences:** The system uses localStorage script snippets, ensuring that once a visitor picks a mode, it remains active when they refresh the screen or jump to different page modules.
-### Updated Codebase (index.html)
-```html
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth overflow-x-hidden max-w-full">
 <head>
@@ -206,6 +199,45 @@ To handle this upgrade seamlessly, I have replaced Font Awesome entirely with **
                     </div>
                 </div>
             </section>
+
+            <section class="max-w-4xl mx-auto px-4 py-16 border-t border-slate-200 dark:border-slate-900">
+                <div class="text-center mb-10">
+                    <span class="text-xs font-bold tracking-widest text-techBlue uppercase block">// HAVE QUESTIONS?</span>
+                    <h2 class="text-2xl sm:text-3xl font-black text-slate-900 dark:text-white">Frequently Asked Inquiries</h2>
+                </div>
+
+                <div class="space-y-4">
+                    <div class="border border-slate-200 dark:border-slate-800 bg-white dark:bg-cardBg rounded-2xl overflow-hidden transition shadow-sm">
+                        <button onclick="toggleAccordion('faq1')" class="w-full flex items-center justify-between p-5 text-left font-bold text-sm sm:text-base text-slate-900 dark:text-white focus:outline-none">
+                            <span>Where is your dynamic IT training facility located?</span>
+                            <span id="faq1-icon" class="material-symbols-outlined transition-transform duration-200">expand_more</span>
+                        </button>
+                        <div id="faq1" class="hidden p-5 pt-0 text-xs sm:text-sm text-slate-600 dark:text-gray-400 border-t border-slate-100 dark:border-slate-900/60 leading-relaxed">
+                            Our main laboratory assets are configured in Accra, Ghana. However, we deploy custom remote hybrid workshops and distributed workspace infrastructure loops dynamically across regional clusters.
+                        </div>
+                    </div>
+
+                    <div class="border border-slate-200 dark:border-slate-800 bg-white dark:bg-cardBg rounded-2xl overflow-hidden transition shadow-sm">
+                        <button onclick="toggleAccordion('faq2')" class="w-full flex items-center justify-between p-5 text-left font-bold text-sm sm:text-base text-slate-900 dark:text-white focus:outline-none">
+                            <span>Can I pay for development tasks or training courses in installments?</span>
+                            <span id="faq2-icon" class="material-symbols-outlined transition-transform duration-200">expand_more</span>
+                        </button>
+                        <div id="faq2" class="hidden p-5 pt-0 text-xs sm:text-sm text-slate-600 dark:text-gray-400 border-t border-slate-100 dark:border-slate-900/60 leading-relaxed">
+                            Yes! We accept flexible milestone installment payments across our custom software construction phases and certified academic training paths to facilitate budget accessibility.
+                        </div>
+                    </div>
+
+                    <div class="border border-slate-200 dark:border-slate-800 bg-white dark:bg-cardBg rounded-2xl overflow-hidden transition shadow-sm">
+                        <button onclick="toggleAccordion('faq3')" class="w-full flex items-center justify-between p-5 text-left font-bold text-sm sm:text-base text-slate-900 dark:text-white focus:outline-none">
+                            <span>How secure is the client email form pipeline on this webpage?</span>
+                            <span id="faq3-icon" class="material-symbols-outlined transition-transform duration-200">expand_more</span>
+                        </button>
+                        <div id="faq3" class="hidden p-5 pt-0 text-xs sm:text-sm text-slate-600 dark:text-gray-400 border-t border-slate-100 dark:border-slate-900/60 leading-relaxed">
+                            Our architecture hides raw emails entirely behind an encrypted cryptographic token system. Data submitted passes through strict client-side evaluation blocks first, preventing malicious bots or scraping tools from hijacking communications.
+                        </div>
+                    </div>
+                </div>
+            </section>
         </div>
 
         <div id="page-about" class="page-section max-w-7xl mx-auto px-4 sm:px-6 py-12 sm:py-16 animate__animated animate__fadeIn overflow-hidden">
@@ -365,22 +397,22 @@ To handle this upgrade seamlessly, I have replaced Font Awesome entirely with **
                     <p class="text-slate-600 dark:text-gray-400 text-xs sm:text-sm leading-relaxed">
                         Unlock a brighter career without stressful math formulas! We offer simplified, 100% practical tech courses perfect for total beginners, students, or workers trying to expand their office skills. Learn at incredibly affordable local rates and earn a physical, industry-recognized **Course Completion Certification**.
                     </p>
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs text-slate-700 dark:text-gray-300">
-                        <div class="flex items-center gap-1.5"><span class="material-symbols-outlined text-emerald-600 dark:text-innovGreen text-sm">check_circle</span>Patient Step-by-Step Guidance</div>
-                        <div class="flex items-center gap-1.5"><span class="material-symbols-outlined text-emerald-600 dark:text-innovGreen text-sm">check_circle</span>Real Projects Built Live</div>
-                        <div class="flex items-center gap-1.5"><span class="material-symbols-outlined text-emerald-600 dark:text-innovGreen text-sm">check_circle</span>Affordable Installment Plan Keys</div>
-                        <div class="flex items-center gap-1.5"><span class="material-symbols-outlined text-emerald-600 dark:text-innovGreen text-sm">check_circle</span>Certificate Issued On Graduation</div>
-                    </div>
                 </div>
                 <div class="lg:col-span-5 rounded-2xl overflow-hidden h-64 border border-slate-200 dark:border-slate-800 shadow-md">
                     <img src="https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=500&q=80" alt="IT Training Class" class="w-full h-full object-cover">
                 </div>
             </div>
 
+            <div class="max-w-md mx-auto mb-10">
+                <div class="relative flex items-center">
+                    <span class="material-symbols-outlined absolute left-4 text-slate-400">search</span>
+                    <input id="moduleSearchField" type="text" onkeyup="filterAcademyTracks()" class="w-full bg-white dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-xl pl-12 pr-4 py-3.5 text-xs sm:text-sm text-slate-900 dark:text-white focus:outline-none focus:border-techBlue shadow-sm" placeholder="Search courses or keywords (e.g. CCTV, Web)...">
+                </div>
+            </div>
+
             <div class="space-y-6">
-                <h3 class="text-xl font-bold text-center text-slate-900 dark:text-white">Select Your Desired Learning Path</h3>
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                    <div class="bg-white dark:bg-cardBg border border-slate-200 dark:border-slate-800 p-6 rounded-2xl space-y-4 flex flex-col justify-between shadow-sm">
+                    <div class="course-card bg-white dark:bg-cardBg border border-slate-200 dark:border-slate-800 p-6 rounded-2xl space-y-4 flex flex-col justify-between shadow-sm">
                         <div class="space-y-2">
                             <div class="w-10 h-10 bg-techBlue/10 text-techBlue rounded-xl flex items-center justify-center border border-techBlue/20"><span class="material-symbols-outlined">code</span></div>
                             <h4 class="text-base font-bold text-slate-900 dark:text-white">Website & Web App Design</h4>
@@ -388,7 +420,7 @@ To handle this upgrade seamlessly, I have replaced Font Awesome entirely with **
                         </div>
                         <span class="text-xs text-emerald-700 dark:text-innovGreen font-bold bg-emerald-50 dark:bg-innovGreen/5 px-2.5 py-1 rounded-md border border-emerald-200 dark:border-innovGreen/20 self-start">Duration: 8 Weeks</span>
                     </div>
-                    <div class="bg-white dark:bg-cardBg border border-slate-200 dark:border-slate-800 p-6 rounded-2xl space-y-4 flex flex-col justify-between shadow-sm">
+                    <div class="course-card bg-white dark:bg-cardBg border border-slate-200 dark:border-slate-800 p-6 rounded-2xl space-y-4 flex flex-col justify-between shadow-sm">
                         <div class="space-y-2">
                             <div class="w-10 h-10 bg-purple-500/10 text-purple-600 dark:text-purple-400 rounded-xl flex items-center justify-center border border-purple-500/20"><span class="material-symbols-outlined">shield</span></div>
                             <h4 class="text-base font-bold text-slate-900 dark:text-white">CCTV & Hardware Engineering</h4>
@@ -396,7 +428,7 @@ To handle this upgrade seamlessly, I have replaced Font Awesome entirely with **
                         </div>
                         <span class="text-xs text-emerald-700 dark:text-innovGreen font-bold bg-emerald-50 dark:bg-innovGreen/5 px-2.5 py-1 rounded-md border border-emerald-200 dark:border-innovGreen/20 self-start">Duration: 6 Weeks</span>
                     </div>
-                    <div class="bg-white dark:bg-cardBg border border-slate-200 dark:border-slate-800 p-6 rounded-2xl space-y-4 flex flex-col justify-between shadow-sm">
+                    <div class="course-card bg-white dark:bg-cardBg border border-slate-200 dark:border-slate-800 p-6 rounded-2xl space-y-4 flex flex-col justify-between shadow-sm">
                         <div class="space-y-2">
                             <div class="w-10 h-10 bg-amber-500/10 text-amber-600 dark:text-amber-500 rounded-xl flex items-center justify-center border border-amber-500/20"><span class="material-symbols-outlined">desktop_windows</span></div>
                             <h4 class="text-base font-bold text-slate-900 dark:text-white">Essential Software & Office Tools</h4>
@@ -408,7 +440,7 @@ To handle this upgrade seamlessly, I have replaced Font Awesome entirely with **
                 
                 <div class="text-center pt-4">
                     <button onclick="navigateTo('contact')" class="bg-gradient-to-r from-techBlue to-innovGreen text-slate-950 text-xs font-black uppercase tracking-wider px-8 py-3.5 rounded-xl shadow-md hover:opacity-90 transition">
-                        Book an Slot Today <span class="material-symbols-outlined text-sm ml-1">arrow_forward</span>
+                        Book a Slot Today <span class="material-symbols-outlined text-sm ml-1">arrow_forward</span>
                     </button>
                 </div>
             </div>
@@ -520,7 +552,7 @@ To handle this upgrade seamlessly, I have replaced Font Awesome entirely with **
                         </div>
                         <h2 class="text-xl font-black text-slate-900 dark:text-white">Full Large Language Model</h2>
                         <p class="text-slate-600 dark:text-gray-400 text-xs leading-relaxed">
-                            This upgraded AI engine can reason, translate, write code snippets, or discuss any topic outside company specifics fluently.
+                            This AI engine can reason, translate, write code snippets, or discuss any topic outside company specifics fluently.
                         </p>
                         <div class="pt-2 border-t border-slate-200 dark:border-slate-900/60 space-y-1.5">
                             <label class="text-[9px] uppercase tracking-wider text-slate-500 dark:text-gray-400 font-bold block">Optional Cloud LLM Hook</label>
@@ -583,7 +615,7 @@ To handle this upgrade seamlessly, I have replaced Font Awesome entirely with **
                         </div>
                         <div class="p-5 space-y-2">
                             <h3 class="text-sm sm:text-base font-bold text-slate-900 dark:text-white hover:text-techBlue transition cursor-pointer">Why Your Local Business Needs a Clean Website</h3>
-                            <p class="text-slate-600 dark:text-gray-400 text-xs leading-relaxed">Having a Facebook page isn't enough anymore. Learn how a real, fast Google-friendly website builds absolute trust and brings customer calls directly to your store without expensive ads.</p>
+                            <p class="text-slate-600 dark:text-gray-400 text-xs leading-relaxed">Having a Facebook page isn't enough anymore. Learn how a real, fast Google-friendly website builds trust and brings customer calls directly to your store without expensive ads.</p>
                         </div>
                     </div>
                     <div class="px-5 pb-5 text-[10px] text-slate-400 dark:text-gray-500 font-medium">June 10, 2026 • 4 Min Read</div>
@@ -708,11 +740,22 @@ To handle this upgrade seamlessly, I have replaced Font Awesome entirely with **
 
     <footer class="w-full border-t border-slate-200 dark:border-slate-900 bg-slate-100 dark:bg-slate-950/60 py-10 text-center text-slate-400 dark:text-gray-500 text-[11px] sm:text-xs max-w-full overflow-hidden">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 space-y-3">
-            <div class="text-slate-800 dark:text-white font-bold text-xs sm:text-sm tracking-wider">EAZZESAM TECHNOLOGIES</div>
+            <div class="text-slate-800 dark:text-white font-bold text-xs sm:text-sm tracking-wider">EAZZESAM  TECHNOLOGIES</div>
             <p class="text-slate-500 dark:text-gray-400 italic">“Your Vision, Our Technology.”</p>
             <div class="text-[9px] sm:text-[10px] tracking-widest text-slate-400 dark:text-gray-600">&copy; 2026 EAZZESAM TECHNOLOGIES. All Rights Reserved.</div>
         </div>
     </footer>
+
+    <div class="fixed bottom-6 right-6 z-50 flex flex-col space-y-3 animate__animated animate__fadeInUp">
+        <a href="tel:0542424592" class="bg-blue-600 hover:bg-blue-700 text-white w-12 h-12 rounded-full flex items-center justify-center shadow-lg transform hover:scale-110 transition duration-200" title="Call Us Directly">
+            <span class="material-symbols-outlined font-bold">call</span>
+        </a>
+        <a href="https://wa.me/233542424592?text=Hello%20Eazzesam%20Technologies%2C%20I%20am%20interested%20in%20your%20services!" target="_blank" class="bg-emerald-500 hover:bg-emerald-600 text-white w-12 h-12 rounded-full flex items-center justify-center shadow-lg transform hover:scale-110 transition duration-200" title="Chat on WhatsApp">
+            <svg class="w-6 h-6 fill-current" viewBox="0 0 24 24">
+                <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.4.011 11.966.011c3.181.012 6.171 1.242 8.425 3.499a11.91 11.91 0 0 1 3.501 8.446c-.005 6.612-5.345 11.95-11.907 11.95-2.001-.001-3.968-.5-5.739-1.451L0 24zm6.59-4.846c1.657.983 3.3 1.489 5.321 1.49 5.341 0 9.69-4.322 9.693-9.63a9.61 9.61 0 0 0-2.839-6.824 9.635 9.635 0 0 0-6.833-2.831c-5.35 0-9.702 4.321-9.706 9.631a9.627 9.627 0 0 0 1.516 5.23L2.516 21.43l4.131-1.276z"/>
+            </svg>
+        </a>
+    </div>
 
     <script>
         // 🌓 Theme Persistent Synchronization Engine
@@ -742,6 +785,37 @@ To handle this upgrade seamlessly, I have replaced Font Awesome entirely with **
                 localStorage.setItem('eazzesam_theme', 'dark');
                 document.getElementById('themeToggleIcon').innerText = 'light_mode';
             }
+        }
+
+        // 🗂️ FAQ Accordion Handler Function
+        function toggleAccordion(id) {
+            const content = document.getElementById(id);
+            const icon = document.getElementById(`${id}-icon`);
+            const isHidden = content.classList.contains('hidden');
+            
+            if (isHidden) {
+                content.classList.remove('hidden');
+                icon.style.transform = 'rotate(180deg)';
+                content.classList.add('animate__animated', 'animate__fadeIn');
+            } else {
+                content.classList.add('hidden');
+                icon.style.transform = 'rotate(0deg)';
+            }
+        }
+
+        // 🔍 Live Search Engine Logic for Courses
+        function filterAcademyTracks() {
+            const input = document.getElementById('moduleSearchField').value.toLowerCase();
+            const cards = document.querySelectorAll('.course-card');
+            
+            cards.forEach(card => {
+                const cardText = card.innerText.toLowerCase();
+                if (cardText.includes(input)) {
+                    card.style.display = "flex";
+                } else {
+                    card.style.display = "none";
+                }
+            });
         }
 
         function toggleMobileMenu() {
