@@ -1,4 +1,4 @@
-Here is a comprehensive, professional README.md file for your project. It outlines the tech stack, features, installation steps, configuration instructions, and file architecture, making it ready for your GitHub repository or project documentation.
+is a comprehensive, professional README.md file for your project. It outlines the tech stack, features, installation steps, configuration instructions, and file architecture, making it ready for your GitHub repository or project documentation.
 ```markdown
 # Eazzesam Technologies Website
 
@@ -72,9 +72,3 @@ To unlock full reasoning, code generation, and complex conversational capabiliti
 ## 📝 License
 Distributed under the MIT License. See LICENSE inside your repository details for more information.
 ```
-
-### How to use this:
-1. Create a new file in your project folder named exactly `README.md`.
-2. Copy and paste the code block above into it. 
-3. If you upload this folder to GitHub, this documentation will instantly format beautifully on your repository homepage! Let me know if you need any adjustments to the paths or configuration blocks.
-
