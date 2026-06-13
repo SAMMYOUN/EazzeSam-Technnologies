@@ -1,1 +1,28 @@
+        body {
+            overflow-x: hidden !important;
+            max-w-full !important;
+            position: relative;
+        }
+        .neon-glow-blue { box-shadow: 0 0 35px rgba(59, 130, 246, 0.15); }
+        .neon-glow-green { box-shadow: 0 0 35px rgba(34, 197, 94, 0.15); }
+        
+        .nav-link { color: #94a3b8; border-bottom: 2px solid transparent; transition: all 0.2s; }
+        .dark .nav-link:hover { color: #ffffff; }
+        .light .nav-link:hover { color: #0f172a; }
+        
+        .dark .nav-active { color: #22c55e; border-bottom: 2px solid #22c55e; }
+        .light .nav-active { color: #16a34a; border-bottom: 2px solid #16a34a; }
+        
+        .page-section { display: none; }
+        .page-section.active-page { display: block; }
+        
+        .custom-scrollbar::-webkit-scrollbar { width: 5px; }
+        .custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: #334155; border-radius: 99px; }
 
+        .material-symbols-outlined {
+            vertical-align: middle;
+            font-size: 20px;
+            display: inline-block;
+        }
+ 
